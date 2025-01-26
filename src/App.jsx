@@ -9,9 +9,11 @@ const optimizely = createInstance({
   sdkKey: 'A52EKCfHmgQrTARNjdwgz', // TODO: Update to your SDK Key
 })
 
+const userId = Math.floor(Math.random() * 10000000)
+
 function App() {
   return (
-    <OptimizelyProvider optimizely={optimizely} user={{ id: 'user123' }}>
+    <OptimizelyProvider optimizely={optimizely} user={{ id: `${userId}` }}>
       <Homepage />
     </OptimizelyProvider>
   );
