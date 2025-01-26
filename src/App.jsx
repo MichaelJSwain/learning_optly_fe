@@ -1,23 +1,20 @@
-import React, { useState } from 'react';
-import { createInstance, OptimizelyProvider, useDecision } from '@optimizely/react-sdk';
+import React from 'react';
+import {
+  createInstance,
+  OptimizelyProvider
+} from '@optimizely/react-sdk'
+import Homepage from './pages/homepage';
 
-const App = () => {
+const optimizely = createInstance({
+  sdkKey: 'A52EKCfHmgQrTARNjdwgz', // TODO: Update to your SDK Key
+})
 
-  const optimizelyInstance = createInstance({
-    sdkKey: 'A52EKCfHmgQrTARNjdwgz'
-  })
-  optimizelyInstance.onReady().then(() => {
-    console.log("optly instance = ", optimizelyInstance);
-  })
-
+function App() {
   return (
-    <OptimizelyProvider
-      optimizely={optimizelyInstance}
-      user={{id: "user123"}}
-    >
-      <h1>App</h1>
+    <OptimizelyProvider optimizely={optimizely} user={{ id: 'user123' }}>
+      <Homepage />
     </OptimizelyProvider>
-  )
+  );
 }
 
 export default App;
